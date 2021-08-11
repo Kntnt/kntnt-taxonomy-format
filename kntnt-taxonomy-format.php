@@ -6,7 +6,7 @@
  * Plugin Name:       Kntnt Format Taxonomy
  * Plugin URI:        https://www.kntnt.com/
  * Description:       Provides the `format` taxonomy whose terms denote the post format (e.g. article, podcast, video or event).
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
  * License:           GPL-3.0+
@@ -45,7 +45,7 @@ class Taxonomy {
 		return [
 
 			// A short descriptive summary of what the taxonomy is for.
-			'description' => _x( 'Taxonomy whose terms denote the post format (e.g. article, podcast, video or event).', 'Description', 'kntnt-taxonomy-format' ),
+			'description' => _x( 'Formats is a taxonomy used as post metadata. Its terms denote the content format (e.g. article, podcast, video or event).', 'Description', 'kntnt-taxonomy-format' ),
 
 			// Whether the taxonomy is hierarchical.
 			'hierarchical' => false,
