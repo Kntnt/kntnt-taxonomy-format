@@ -6,7 +6,7 @@
  * Plugin Name:       Kntnt Format Taxonomy
  * Plugin URI:        https://www.kntnt.com/
  * Description:       Provides the `format` taxonomy whose terms denote the post format (e.g. article, podcast, video or event).
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
  * License:           GPL-3.0+
@@ -68,7 +68,7 @@ class Taxonomy {
 			'show_in_nav_menus' => true,
 
 			// Whether to list the taxonomy in the Tag Cloud Widget controls.
-			'show_tagcloud' => true,
+			'show_tagcloud' => false,
 
 			// Whether to show the taxonomy in the quick/bulk edit panel.
 			'show_in_quick_edit' => true,
@@ -76,6 +76,11 @@ class Taxonomy {
 			// Whether to display a column for the taxonomy on its post
 			// type listing screens.
 			'show_admin_column' => true,
+
+			// Metabox to show on edit. If a callable, it is called to render
+			// the metabox. If `null` the default metabox is used. If `false`,
+			// no metabox is shown.
+			'meta_box_cb' => false,
 
 			// Array of capabilities for this taxonomy.
 			'capabilities' => [
