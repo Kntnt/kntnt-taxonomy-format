@@ -16,20 +16,19 @@
 
 namespace Kntnt\Format;
 
-
-defined( 'ABSPATH' ) && new Taxonomy;
+defined( 'ABSPATH' ) && new Taxonomy();
 
 
 class Taxonomy {
 
 	public function __construct() {
-		add_action( 'init', [ $this, 'run' ] );
+		add_action( 'init', array( $this, 'run' ) );
 	}
 
 	public function run() {
 
 		$slug       = apply_filters( 'kntnt_taxonomy_format_slug', 'format' );
-		$post_types = apply_filters( 'kntnt_taxonomy_format_objects', [ 'post' ] );
+		$post_types = apply_filters( 'kntnt_taxonomy_format_objects', array( 'post' ) );
 
 		register_taxonomy( $slug, null, $this->taxonomy( $slug ) );
 
@@ -37,12 +36,12 @@ class Taxonomy {
 			register_taxonomy_for_object_type( $slug, $post_type );
 		}
 
-		add_filter( 'term_updated_messages', [ $this, 'term_updated_messages' ] );
+		add_filter( 'term_updated_messages', array( $this, 'term_updated_messages' ) );
 
 	}
 
 	private function taxonomy() {
-		return [
+		return array(
 
 			// A short descriptive summary of what the taxonomy is for.
 			'description'        => _x( 'Formats is a taxonomy used as post metadata. Its terms denote the content format (e.g. article, podcast, video or event).', 'Description', 'kntnt-taxonomy-format' ),
@@ -83,12 +82,12 @@ class Taxonomy {
 			'meta_box_cb'        => false,
 
 			// Array of capabilities for this taxonomy.
-			'capabilities'       => [
+			'capabilities'       => array(
 				'manage_terms' => 'edit_posts',
 				'edit_terms'   => 'edit_posts',
 				'delete_terms' => 'edit_posts',
 				'assign_terms' => 'edit_posts',
-			],
+			),
 
 			// Sets the query var key for this taxonomy. Default $taxonomy key.
 			// If false, a taxonomy cannot be loaded
@@ -98,7 +97,7 @@ class Taxonomy {
 
 			// Triggers the handling of rewrites for this taxonomy.
 			// Replace the array with false to prevent handling of rewrites.
-			'rewrite'            => [
+			'rewrite'            => array(
 
 				// Customize the permastruct slug.
 				'slug'         => 'format',
@@ -115,13 +114,13 @@ class Taxonomy {
 				// permalink_epmask is not set, defaults to EP_PERMALINK.
 				'ep_mask'      => null,
 
-			],
+			),
 
 			// Default term to be used for the taxonomy.
 			'default_term'       => null,
 
 			// An array of labels for this taxonomy.
-			'labels'             => [
+			'labels'             => array(
 				'name'                       => _x( 'Formats', 'Plural name', 'kntnt-taxonomy-format' ),
 				'singular_name'              => _x( 'Format', 'Singular name', 'kntnt-taxonomy-format' ),
 				'search_items'               => _x( 'Search formats', 'Search items', 'kntnt-taxonomy-format' ),
@@ -143,13 +142,13 @@ class Taxonomy {
 				'items_list'                 => _x( 'Items list', 'Formats list', 'kntnt-taxonomy-format' ),
 				'most_used'                  => _x( 'Most used', 'Most used', 'kntnt-taxonomy-format' ),
 				'back_to_items'              => _x( 'Back to formats', 'Back to items', 'kntnt-taxonomy-format' ),
-			],
+			),
 
-		];
+		);
 	}
 
 	public function term_updated_messages( $messages ) {
-		$messages['format'] = [
+		$messages['format'] = array(
 			0 => '', // Unused. Messages start at index 1.
 			1 => __( 'Format added.', 'kntnt-taxonomy-format' ),
 			2 => __( 'Format deleted.', 'kntnt-taxonomy-format' ),
@@ -157,7 +156,7 @@ class Taxonomy {
 			4 => __( 'Format not added.', 'kntnt-taxonomy-format' ),
 			5 => __( 'Format not updated.', 'kntnt-taxonomy-format' ),
 			6 => __( 'Formats deleted.', 'kntnt-taxonomy-format' ),
-		];
+		);
 		return $messages;
 	}
 
